@@ -1,8 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import {css} from 'twin.macro';
 
-import AppButton from './components/Shared/AppButton';
 import {baseColors} from './css/config';
+
+import AppButton from './components/Shared/AppButton';
+import ClaimRewards from './views/ClaimRewards';
 
 const backgroundGradient = css`
   background-image: linear-gradient(
@@ -32,6 +34,9 @@ function App() {
         <AppButton type="decline" rounded="lg" style={{width: '12em', height: '2em'}}>
           Back
         </AppButton>
+      </div>
+      <div>
+        <ClaimRewards />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import tw, {styled, css} from 'twin.macro';
+import tw, {css} from 'twin.macro';
 
 import {baseColors} from '../../css/config';
 
