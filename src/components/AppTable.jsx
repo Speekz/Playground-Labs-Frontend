@@ -14,7 +14,7 @@ const AppTable = ({head, body}) => (
       <div
         css={[
           tHeadCss,
-          tw`rounded-lg font-medium grid`,
+          tw`rounded-lg font-medium grid justify-items-center`,
           css`
             grid-template-columns: repeat(${head.length}, 1fr);
           `,
@@ -45,12 +45,11 @@ const AppTable = ({head, body}) => (
             ]}
           >
             <div>Some Activity</div>
-            <div>{data.rewardToken}</div>
-            <div>{data.unclaimedAmount}</div>
-            <div>{data.totalClaimed}</div>
-            <div>{data.rewardTokenEarned}</div>
-            <div>{data.usdTotal}</div>
-            <div>{data.weeklyRank}</div>
+            {Object.values(data)
+              .slice(1)
+              .map(info => (
+                <div>{info}</div>
+              ))}
           </div>
         ))}
       </div>
