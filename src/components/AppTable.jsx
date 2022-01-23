@@ -3,6 +3,7 @@ import tw, {css} from 'twin.macro';
 
 import {baseColors} from '../css/config';
 import AppComponentBorder from '../components/Shared/AppComponentBorder';
+import AppButton from './Shared/AppButton';
 
 const tHeadCss = css`
   background-color: ${baseColors.purple};
@@ -14,7 +15,7 @@ const AppTable = ({head, body}) => (
       <div
         css={[
           tHeadCss,
-          tw`rounded-lg font-medium grid justify-items-center`,
+          tw`rounded-lg font-medium grid justify-items-center py-4 mb-4`,
           css`
             grid-template-columns: repeat(${head.length}, 1fr);
           `,
@@ -44,7 +45,12 @@ const AppTable = ({head, body}) => (
               `,
             ]}
           >
-            <div>Some Activity</div>
+            <div tw="flex">
+              <AppButton type="default" rounded="full" style={{width: '4em'}}>
+                Claim
+              </AppButton>
+              <div tw="ml-4">Some Activity</div>
+            </div>
             {Object.values(data)
               .slice(1)
               .map(info => (
