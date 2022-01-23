@@ -1,6 +1,7 @@
 const baseColors = {
   "green-dark": "#1E8D87",
   green: "#1bba8f",
+  "green-light": "#76d6bc",
   background: "#230742",
   purple: "#711bba",
   "blue-purple": "#2c0d84",
