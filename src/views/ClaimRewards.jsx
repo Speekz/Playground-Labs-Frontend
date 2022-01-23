@@ -32,7 +32,7 @@ function ClaimRewards() {
 
   return (
     <div>
-      <AppTable head={exampleTHead} />
+      <AppTable head={exampleTHead} body={tableContent} />
     </div>
   );
 }
