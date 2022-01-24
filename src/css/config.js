@@ -12,6 +12,8 @@ const baseColors = {
   'purple-table-body': '#27084c',
   'purple-table-head': '#3f0e70',
   dividers: '#60487a',
+  'modal-opacity': 'RGBA(15, 3, 39, 0.8)',
+  grey: '#808080',
 };
 
 // Colors taken from https://imagecolorpicker.com/en

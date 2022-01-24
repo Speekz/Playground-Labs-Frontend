@@ -35,6 +35,13 @@ const BUTTON_TYPES = {
       }
     `,
   },
+  disable: {
+    key: 'disable',
+    css: css`
+      pointer-events: none;
+      background-color: ${baseColors.grey};
+    `,
+  },
 };
 
 const getButtonType = key => {
@@ -53,24 +60,19 @@ const getButtonTypeCss = key => {
   return buttonType.css;
 };
 
-const AppButton = ({children, type, rounded, className, onClick, ...restProps}) => {
-  const onButtonClick = e => {
-    alert(JSON.stringify(restProps));
-  };
-
+const AppButton = ({children, type, rounded, onClick, ...restProps}) => {
   return (
     <div
       css={[
         BASE_BUTTON_CSS,
         getButtonTypeCss(type),
-        tw`relative inline-flex items-center justify-center py-2 px-4 font-medium italic`,
+        tw`relative inline-flex items-center justify-center py-2 px-4 font-medium italic cursor-pointer`,
         css`
           ${rounded === 'full' ? tw`rounded-full` : ''};
           ${rounded === 'lg' ? tw`rounded-lg` : ''};
         `,
-        className,
       ]}
-      onClick={e => onButtonClick(e)}
+      onClick={e => onClick(e)}
       {...restProps}
     >
       <span tw="inline-flex items-center justify-center">{children}</span>
