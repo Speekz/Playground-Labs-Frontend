@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import tw, {css} from 'twin.macro';
+
 import {useEffect, useState} from 'react';
 
 import {request} from '../services/request';
@@ -10,7 +13,7 @@ const exampleTHead = [
   'unclaimed',
   'total claimed',
   'xyz earned',
-  'total usd',
+  'total (usd)',
   'weekly rank',
 ];
 
@@ -31,8 +34,10 @@ function ClaimRewards() {
   };
 
   return (
-    <div>
-      <AppTable head={exampleTHead} body={tableContent} />
+    <div tw="w-full h-full flex justify-center items-center">
+      <div tw="w-3/4">
+        <AppTable head={exampleTHead} body={tableContent} />
+      </div>
     </div>
   );
 }

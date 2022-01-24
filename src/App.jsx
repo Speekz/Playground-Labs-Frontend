@@ -20,24 +20,7 @@ const backgroundGradient = css`
 function App() {
   return (
     <div className="App" css={[backgroundGradient]}>
-      <div>
-        <AppButton type="default" rounded="full" style={{width: '4em'}}>
-          Claim
-        </AppButton>
-      </div>
-      <div>
-        <AppButton type="accept" rounded="lg" style={{width: '12em', height: '2em'}}>
-          Claim
-        </AppButton>
-      </div>
-      <div>
-        <AppButton type="decline" rounded="lg" style={{width: '12em', height: '2em'}}>
-          Back
-        </AppButton>
-      </div>
-      <div>
-        <ClaimRewards />
-      </div>
+      <ClaimRewards />
     </div>
   );
 }
