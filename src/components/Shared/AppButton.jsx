@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import tw, {css} from 'twin.macro';
+import PropTypes from 'prop-types';
 
 import {baseColors} from '../../css/config';
 
@@ -78,6 +79,19 @@ const AppButton = ({children, type, rounded, onClick, ...restProps}) => {
       <span tw="inline-flex items-center justify-center">{children}</span>
     </div>
   );
+};
+
+AppButton.propTypes = {
+  type: PropTypes.string,
+  rounded: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  onClick: PropTypes.func,
+};
+
+AppButton.defaultProps = {
+  type: 'default',
+  rounded: 'lg',
+  onClick: () => {},
 };
 
 export default AppButton;

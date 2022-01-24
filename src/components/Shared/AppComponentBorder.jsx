@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import tw, {css} from 'twin.macro';
+import PropTypes from 'prop-types';
 
 import {baseColors} from '../../css/config';
 
@@ -24,5 +25,9 @@ const AppComponentBorder = ({children}) => (
     <div css={[childrenCss, tw`flex justify-center rounded-lg`]}>{children}</div>
   </div>
 );
+
+AppComponentBorder.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+};
 
 export default AppComponentBorder;

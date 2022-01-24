@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import tw, {css} from 'twin.macro';
+import PropTypes from 'prop-types';
 
 import {baseColors} from '../css/config';
 import AppComponentBorder from '../components/Shared/AppComponentBorder';
@@ -80,5 +81,17 @@ const AppTable = ({head, body, onClick}) => (
     </div>
   </AppComponentBorder>
 );
+
+AppTable.propTypes = {
+  head: PropTypes.array,
+  body: PropTypes.array,
+  onClick: PropTypes.func,
+};
+
+AppTable.defaultProps = {
+  head: [],
+  body: [],
+  onClick: () => {},
+};
 
 export default AppTable;

@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import {useEffect, useState} from 'react';
 import tw, {css} from 'twin.macro';
+import PropTypes from 'prop-types';
 
 import {baseColors} from '../css/config';
 
@@ -81,6 +82,16 @@ const AppModal = ({onSubmit, onCancel}) => {
       </div>
     </div>
   );
+};
+
+AppModal.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};
+
+AppModal.defaultProps = {
+  onSubmit: () => {},
+  onCalcel: () => {},
 };
 
 export default AppModal;

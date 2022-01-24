@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import tw, {css} from 'twin.macro';
+import PropTypes from 'prop-types';
 
 import {baseColors} from '../../css/config';
 
-const AppInput = ({maxLength, placeholder, rounded, validInput, onChange, ...restProps}) => (
+const AppInput = ({maxLength, placeholder, validInput, onChange, ...restProps}) => (
   <div
     css={css`
       text-align: center;
@@ -35,5 +36,19 @@ const AppInput = ({maxLength, placeholder, rounded, validInput, onChange, ...res
     ></input>
   </div>
 );
+
+AppInput.propTypes = {
+  maxLength: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
+  validInput: PropTypes.bool.isRequired,
+  onChange: PropTypes.func,
+};
+
+AppInput.defaultProps = {
+  maxLength: '50',
+  placeholder: 'write here',
+  validInput: false,
+  onChange: () => {},
+};
 
 export default AppInput;
