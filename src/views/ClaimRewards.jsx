@@ -25,7 +25,7 @@ function ClaimRewards() {
 
   useEffect(() => {
     getTableContent();
-  }, [tableContent]);
+  }, []);
 
   const getTableContent = async () => {
     try {
@@ -41,9 +41,13 @@ function ClaimRewards() {
     setClaimId(claimId);
   };
 
-  const handleModalSubmit = walletId => {
-    console.log('Wallet', walletId, 'ClaimId', claimId);
-    setDisplayModal(false);
+  const handleModalSubmit = async walletId => {
+    try {
+      await request.post('/submitClaim', {claimId, address: walletId});
+      setDisplayModal(false);
+    } catch (e) {
+      alert(`Error: ${e}`);
+    }
   };
 
   const handleBackModal = () => {
