@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import tw, {css} from 'twin.macro';
 import PropTypes from 'prop-types';
 
@@ -10,10 +10,20 @@ import AppComponentBorder from './Shared/AppComponentBorder';
 import AppInput from './Shared/AppInput';
 
 const AppModal = ({onSubmit, onCancel}) => {
+  const node = useRef();
+
   const [bitcoinWallet, setBitcoinWallet] = useState('');
   const [validWallet, setValidWallet] = useState(false);
 
   useEffect(() => {}, [bitcoinWallet]);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleAwayClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleAwayClick);
+    };
+  }, []);
 
   const handleInputChange = e => {
     const tempWallet = e.target.value;
@@ -23,6 +33,13 @@ const AppModal = ({onSubmit, onCancel}) => {
       return;
     }
     setValidWallet(true);
+  };
+
+  const handleAwayClick = e => {
+    if (node.current.contains(e.target)) {
+      return;
+    }
+    onCancel(false);
   };
 
   return (
@@ -37,6 +54,7 @@ const AppModal = ({onSubmit, onCancel}) => {
       <div tw="h-full flex justify-center items-center">
         <AppComponentBorder>
           <div
+            ref={node}
             css={[
               tw`shadow-2xl`,
               css`
