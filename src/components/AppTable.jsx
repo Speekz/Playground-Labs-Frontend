@@ -23,36 +23,54 @@ const AppTable = ({head, body}) => (
       </div>
       <div
         css={[
-          tw`grid`,
+          tw`grid overflow-y-scroll`,
           css`
+            &::-webkit-scrollbar {
+              width: 5px;
+            }
+
+            &::-webkit-scrollbar-track {
+              background-color: ${baseColors['purple-table-body']};
+              border-radius: 9999px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              border-radius: 100px;
+              background-color: ${baseColors.purple};
+            }
+            height: 16rem;
+            direction: rtl;
             grid-template-rows: repeat(${body.length}, auto);
           `,
         ]}
       >
-        {body.map(data => (
-          <div
-            key={data.claimId}
-            css={[
-              tw`grid justify-items-center rounded-lg mb-4 py-4 items-center`,
-              css`
-                grid-template-columns: repeat(${head.length}, 1fr);
-                background-color: ${baseColors['purple-table-body']};
-              `,
-            ]}
-          >
-            <div tw="flex items-center pl-1">
-              <AppButton type="default" rounded="full" style={{width: '4em'}}>
-                Claim
-              </AppButton>
-              <span tw="ml-4 text-sm">Some Activity </span>
+        <div tw="ml-1">
+          {body.map(data => (
+            <div
+              key={data.claimId}
+              css={[
+                tw`grid justify-items-center rounded-lg mb-4 py-4 items-center`,
+                css`
+                  direction: ltr;
+                  grid-template-columns: repeat(${head.length}, 1fr);
+                  background-color: ${baseColors['purple-table-body']};
+                `,
+              ]}
+            >
+              <div tw="flex items-center pl-1">
+                <AppButton type="default" rounded="full" style={{width: '4em'}}>
+                  Claim
+                </AppButton>
+                <span tw="ml-4 text-sm">Some Activity </span>
+              </div>
+              {Object.values(data)
+                .slice(1)
+                .map((info, index) => (
+                  <div key={index}>{info}</div>
+                ))}
             </div>
-            {Object.values(data)
-              .slice(1)
-              .map((info, index) => (
-                <div key={index}>{info}</div>
-              ))}
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   </AppComponentBorder>

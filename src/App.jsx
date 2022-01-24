@@ -3,7 +3,6 @@ import {css} from 'twin.macro';
 
 import {baseColors} from './css/config';
 
-import AppButton from './components/Shared/AppButton';
 import ClaimRewards from './views/ClaimRewards';
 
 const backgroundGradient = css`

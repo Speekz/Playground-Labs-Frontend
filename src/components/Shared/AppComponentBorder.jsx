@@ -15,7 +15,7 @@ const tableBorder = css`
 `;
 
 const childrenCss = css`
-  background-color: ${baseColors.background};
+  background-color: ${baseColors['general-background']};
   width: fit-content;
 `;
 

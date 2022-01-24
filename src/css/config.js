@@ -6,7 +6,7 @@ const baseColors = {
   purple: '#711bba',
   'blue-purple': '#2c0d84',
   input: '#160931',
-  'modal-background': '#0f0327',
+  'general-background': '#0f0327',
   'purple-light': '#6818b3',
   'purple-dark': '#35048b',
   'purple-table-body': '#27084c',
