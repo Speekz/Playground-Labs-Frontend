@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import tw, {css} from 'twin.macro';
+import PropTypes from 'prop-types';
 
 import {baseColors} from '../css/config';
 import AppComponentBorder from '../components/Shared/AppComponentBorder';
 import AppButton from './Shared/AppButton';
 
-const AppTable = ({head, body}) => (
+const AppTable = ({head, body, onClick}) => (
   <AppComponentBorder>
     <div css={[tw`border-collapse m-5 grid`]}>
       <div
@@ -38,7 +39,7 @@ const AppTable = ({head, body}) => (
               border-radius: 100px;
               background-color: ${baseColors.purple};
             }
-            height: 16rem;
+            height: 15.5rem;
             direction: rtl;
             grid-template-rows: repeat(${body.length}, auto);
           `,
@@ -58,7 +59,12 @@ const AppTable = ({head, body}) => (
               ]}
             >
               <div tw="flex items-center pl-1">
-                <AppButton type="default" rounded="full" style={{width: '4em'}}>
+                <AppButton
+                  type="default"
+                  rounded="full"
+                  style={{width: '4em'}}
+                  onClick={() => onClick(data.claimId)}
+                >
                   Claim
                 </AppButton>
                 <span tw="ml-4 text-sm">Some Activity </span>
@@ -75,5 +81,17 @@ const AppTable = ({head, body}) => (
     </div>
   </AppComponentBorder>
 );
+
+AppTable.propTypes = {
+  head: PropTypes.array,
+  body: PropTypes.array,
+  onClick: PropTypes.func,
+};
+
+AppTable.defaultProps = {
+  head: [],
+  body: [],
+  onClick: () => {},
+};
 
 export default AppTable;

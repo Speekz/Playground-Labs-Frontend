@@ -6,6 +6,7 @@ import {useEffect, useState} from 'react';
 import {request} from '../services/request';
 
 import AppTable from '../components/AppTable';
+import AppModal from '../components/AppModal';
 
 const exampleTHead = [
   'your earnings',
@@ -19,6 +20,8 @@ const exampleTHead = [
 
 function ClaimRewards() {
   const [tableContent, setTableContent] = useState([]);
+  const [displayModal, setDisplayModal] = useState(false);
+  const [claimId, setClaimId] = useState(null);
 
   useEffect(() => {
     getTableContent();
@@ -29,14 +32,29 @@ function ClaimRewards() {
       const response = await request.get('/claims');
       setTableContent(response.data);
     } catch (e) {
-      alert('Error', e);
+      alert(`Error: ${e}`);
     }
   };
 
+  const handleTableClick = claimId => {
+    setDisplayModal(true);
+    setClaimId(claimId);
+  };
+
+  const handleModalSubmit = walletId => {
+    console.log('Wallet', walletId, 'ClaimId', claimId);
+    setDisplayModal(false);
+  };
+
+  const handleBackModal = () => {
+    setDisplayModal(false);
+  };
+
   return (
-    <div tw="w-full h-full flex justify-center items-center">
+    <div tw="w-screen h-screen flex justify-center items-center relative">
       <div tw="w-3/4">
-        <AppTable head={exampleTHead} body={tableContent} />
+        <AppTable head={exampleTHead} body={tableContent} onClick={handleTableClick} />
+        {displayModal && <AppModal onSubmit={handleModalSubmit} onCancel={handleBackModal} />}
       </div>
     </div>
   );
