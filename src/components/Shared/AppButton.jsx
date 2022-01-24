@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import tw, {styled, css} from 'twin.macro';
+import tw, {css} from 'twin.macro';
 
 import {baseColors} from '../../css/config';
 
@@ -63,7 +63,7 @@ const AppButton = ({children, type, rounded, className, onClick, ...restProps}) 
       css={[
         BASE_BUTTON_CSS,
         getButtonTypeCss(type),
-        tw`relative inline-flex items-center justify-center py-1 px-4 font-medium italic`,
+        tw`relative inline-flex items-center justify-center py-2 px-4 font-medium italic`,
         css`
           ${rounded === 'full' ? tw`rounded-full` : ''};
           ${rounded === 'lg' ? tw`rounded-lg` : ''};
