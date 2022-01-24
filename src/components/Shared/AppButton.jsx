@@ -61,7 +61,7 @@ const getButtonTypeCss = key => {
   return buttonType.css;
 };
 
-const AppButton = ({children, type, rounded, onClick, ...restProps}) => {
+const AppButton = ({children, type, rounded, styles, onClick, ...restProps}) => {
   return (
     <div
       css={[
@@ -72,6 +72,7 @@ const AppButton = ({children, type, rounded, onClick, ...restProps}) => {
           ${rounded === 'full' ? tw`rounded-full` : ''};
           ${rounded === 'lg' ? tw`rounded-lg` : ''};
         `,
+        styles,
       ]}
       onClick={e => onClick(e)}
       {...restProps}

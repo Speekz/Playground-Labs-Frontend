@@ -55,7 +55,7 @@ function ClaimRewards() {
   };
 
   return (
-    <div tw="w-screen h-screen flex justify-center items-center relative">
+    <div tw="w-screen h-screen flex xl:justify-center items-center relative">
       <div tw="w-3/4">
         <AppTable head={exampleTHead} body={tableContent} onClick={handleTableClick} />
         {displayModal && <AppModal onSubmit={handleModalSubmit} onCancel={handleBackModal} />}
