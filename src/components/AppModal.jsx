@@ -4,6 +4,7 @@ import tw, {css} from 'twin.macro';
 import PropTypes from 'prop-types';
 
 import {baseColors} from '../css/config';
+import {device} from '../data/ScreenSize';
 
 import AppButton from './Shared/AppButton';
 import AppComponentBorder from './Shared/AppComponentBorder';
@@ -58,8 +59,13 @@ const AppModal = ({onSubmit, onCancel}) => {
             css={[
               tw`shadow-2xl`,
               css`
-                width: 30rem;
+                width: 15rem;
                 height: 28rem;
+
+                @media ${device.tablet} {
+                  width: 30rem;
+                  height: 28rem;
+                }
               `,
             ]}
           >
@@ -75,13 +81,29 @@ const AppModal = ({onSubmit, onCancel}) => {
                   maxLength="10"
                   onChange={handleInputChange}
                   validInput={validWallet}
-                  style={{width: '22rem', height: '2.5rem'}}
+                  styles={css`
+                    width: 12rem;
+                    height: 2.5rem;
+
+                    @media ${device.tablet} {
+                      width: 22rem;
+                      height: 2.5rem;
+                    }
+                  `}
                 />
               </div>
               <AppButton
                 type={validWallet ? 'accept' : 'disable'}
                 rounded="lg"
-                style={{width: '17em', padding: '0.7rem', marginTop: '0.5rem'}}
+                styles={css`
+                  width: 8rem;
+                  padding: 0.7rem;
+                  margin-top: 0.5rem;
+
+                  @media ${device.tablet} {
+                    width: 17rem;
+                  }
+                `}
                 onClick={() => onSubmit(bitcoinWallet)}
               >
                 Claim
@@ -89,7 +111,15 @@ const AppModal = ({onSubmit, onCancel}) => {
               <AppButton
                 type="decline"
                 rounded="lg"
-                style={{width: '17em', padding: '0.7rem', marginTop: '0.5rem'}}
+                styles={css`
+                  width: 8rem;
+                  padding: 0.7rem;
+                  margin-top: 0.5rem;
+
+                  @media ${device.tablet} {
+                    width: 17rem;
+                  }
+                `}
                 onClick={() => onCancel()}
               >
                 Back

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import {baseColors} from '../../css/config';
 
-const AppInput = ({maxLength, placeholder, validInput, onChange, ...restProps}) => (
+const AppInput = ({maxLength, placeholder, validInput, onChange, styles, ...restProps}) => (
   <div
     css={css`
       text-align: center;
@@ -30,6 +30,7 @@ const AppInput = ({maxLength, placeholder, validInput, onChange, ...restProps}) 
             box-shadow: 0px 0px 1px 1px ${baseColors.purple};
           }
         `,
+        styles,
       ]}
       {...restProps}
       onChange={e => onChange(e)}

@@ -25,7 +25,7 @@ function ClaimRewards() {
 
   useEffect(() => {
     getTableContent();
-  }, [tableContent]);
+  }, []);
 
   const getTableContent = async () => {
     try {
@@ -41,9 +41,13 @@ function ClaimRewards() {
     setClaimId(claimId);
   };
 
-  const handleModalSubmit = walletId => {
-    console.log('Wallet', walletId, 'ClaimId', claimId);
-    setDisplayModal(false);
+  const handleModalSubmit = async walletId => {
+    try {
+      await request.post('/submitClaim', {claimId, address: walletId});
+      setDisplayModal(false);
+    } catch (e) {
+      alert(`Error: ${e}`);
+    }
   };
 
   const handleBackModal = () => {
@@ -51,7 +55,7 @@ function ClaimRewards() {
   };
 
   return (
-    <div tw="w-screen h-screen flex justify-center items-center relative">
+    <div tw="w-screen h-screen flex xl:justify-center items-center relative">
       <div tw="w-3/4">
         <AppTable head={exampleTHead} body={tableContent} onClick={handleTableClick} />
         {displayModal && <AppModal onSubmit={handleModalSubmit} onCancel={handleBackModal} />}
